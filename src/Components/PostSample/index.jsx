@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-import styles from "./styles.module.scss";
-import { Icon } from '@iconify/react';
 import moment from "moment";
+import { Icon } from "@iconify/react";
+import Badge from "../../Components/Badge";
+
+import styles from "./styles.module.scss";
 
 function PostSample({ meta, upvotes, comments, category, created_at }) {
   const [totalVotes, setTotalVotes] = useState(upvotes);
@@ -17,7 +19,10 @@ function PostSample({ meta, upvotes, comments, category, created_at }) {
   return (
     <div className={styles.postContainer}>
       <div className={styles.postVoteContainer}>
-        <button className={styles.postVoteIncrement} onClick={(event) => handleIncrementVote(event)}>
+        <button
+          className={styles.postVoteIncrement}
+          onClick={(event) => handleIncrementVote(event)}
+        >
           <Icon icon="ep:arrow-up-bold" />
         </button>
         <div className={styles.postVote}>
@@ -25,16 +30,10 @@ function PostSample({ meta, upvotes, comments, category, created_at }) {
         </div>
       </div>
       <div className={styles.postDataContainer}>
-        <span className={styles.postUrl}>
-          {meta.url.toUpperCase()}
-        </span>
-        <span className={styles.postTitle}>
-          {meta.title}
-        </span>
+        <span className={styles.postUrl}>{meta.url.toUpperCase()}</span>
+        <span className={styles.postTitle}>{meta.title}</span>
         <div className={styles.postDetails}>
-          <span className={styles.postCategory}>
-            {category}
-          </span>
+          <Badge type={category} />
           <a href="/#" className={styles.postAuthor}>
             {meta.author}
           </a>
@@ -42,7 +41,7 @@ function PostSample({ meta, upvotes, comments, category, created_at }) {
             {moment.unix(created_at).fromNow()}
           </span>
           <a href="/" className={styles.postComments}>
-          <Icon icon="fa:comment" />
+            <Icon icon="fa:comment" />
             {comments} Comments
           </a>
         </div>

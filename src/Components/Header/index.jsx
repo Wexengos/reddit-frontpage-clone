@@ -2,14 +2,16 @@ import { useState, useContext } from "react";
 
 import Select from "react-select";
 
-import styles from "./styles.module.scss";
-
 import { FilterContext } from "../../App";
-import { options } from "./filterOptions";
+
+import MenuButton from "../../Components/MenuButton";
+
+import styles from "./styles.module.scss";
 
 function Header() {
   const { data, setFilteredData } = useContext(FilterContext);
 
+  const [open, setOpen] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("none");
 
   function handleSearch(data, setFilteredData, event) {
@@ -30,6 +32,7 @@ function Header() {
           target[currentFilter].toString().toLowerCase().search(value) !== -1;
         return exists;
       }
+      return null;
     });
 
     setFilteredData(result);
@@ -38,13 +41,10 @@ function Header() {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <Select
-          options={options}
-          defaultValue={options[0]}
-          onChange={(selectedOption) => {
-            console.log("filtro: ", currentFilter);
-            setCurrentFilter(selectedOption.value);
-          }}
+
+        <MenuButton
+          currentFilter={currentFilter}
+          setCurrentFilter={setCurrentFilter}
         />
         <input
           type="text"
