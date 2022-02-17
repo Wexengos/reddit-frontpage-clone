@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Col from "react-bootstrap/Col";
 
@@ -13,7 +13,7 @@ function Pages() {
   const { data, setData, filteredData, setFilteredData } =
     useContext(FilterContext);
 
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     async function getPosts() {
@@ -36,15 +36,22 @@ function Pages() {
         {isLoading ? (
           <p>Loading posts...</p>
         ) : (
+          filteredData.length > 0 ?
           filteredData.map((item, index) => {
+            console.log("Item está como tamanho ", filteredData.length);
             return (
               <PostSample
                 key={index}
-                title={item.meta.title}
-                url={item.meta.url}
+                meta={item.meta}
+                upvotes={item.upvotes}
+                comments={item.comments}
+                category={item.category}
+                created_at={item.created_at}
               />
             );
-          })
+
+            //meta, upvotes, comments, category, created_at
+          }) : <p>Ops! No results found.</p>
         )}
       </Col>
     </Col>

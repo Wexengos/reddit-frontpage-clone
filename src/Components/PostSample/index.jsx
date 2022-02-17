@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import styles from "./styles.module.scss";
 import { Icon } from '@iconify/react';
@@ -6,6 +6,8 @@ import moment from "moment";
 
 function PostSample({ meta, upvotes, comments, category, created_at }) {
   const [totalVotes, setTotalVotes] = useState(upvotes);
+
+  console.log("Upvote: ", upvotes, "Total vote: ", totalVotes);
 
   function handleIncrementVote(event) {
     event.preventDefault();
@@ -37,7 +39,7 @@ function PostSample({ meta, upvotes, comments, category, created_at }) {
             {meta.author}
           </a>
           <span className={styles.postDate}>
-            {moment(created_at).fromNow()}
+            {moment.unix(created_at).fromNow()}
           </span>
           <a href="/" className={styles.postComments}>
           <Icon icon="fa:comment" />

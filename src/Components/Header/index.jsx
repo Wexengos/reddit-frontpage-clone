@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 
 import Select from "react-select";
 
@@ -10,7 +10,7 @@ import { options } from "./filterOptions";
 function Header() {
   const { data, setFilteredData } = useContext(FilterContext);
 
-  const [currentFilter, setCurrentFilter] = useState();
+  const [currentFilter, setCurrentFilter] = useState("none");
 
   function handleSearch(data, setFilteredData, event) {
     // setIsSearched(true);
@@ -18,10 +18,14 @@ function Header() {
     let result = [];
 
     console.log("value: ", value);
-    console.log("data: ", data);
+    console.log("filtro: ", currentFilter);
 
     result = data.filter((target) => {
-      if (target[currentFilter] !== null) {
+      if (currentFilter === "none") {
+        let exists = JSON.stringify(target).toLowerCase().search(value) !== -1;
+        return exists;
+      }
+      if (target[currentFilter] !== undefined) {
         let exists =
           target[currentFilter].toString().toLowerCase().search(value) !== -1;
         return exists;
@@ -36,6 +40,7 @@ function Header() {
       <div className={styles.headerContent}>
         <Select
           options={options}
+          defaultValue={options[0]}
           onChange={(selectedOption) => {
             console.log("filtro: ", currentFilter);
             setCurrentFilter(selectedOption.value);
