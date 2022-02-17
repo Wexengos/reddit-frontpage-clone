@@ -1,0 +1,21 @@
+.headerContainer {
+  width: 100%;
+  top: 0;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: 5px solid lightgrey;
+  position: fixed;
+}
+
+.headerContent {
+  width: 1280px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInput {
+    margin: 2rem;
+    width: 30%;
+    height: 2.5rem;
+}
