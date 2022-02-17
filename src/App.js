@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route element={<Posts />} path="/" />
         </Routes>
-      </BrowserRouter>{" "}
+      </BrowserRouter>
     </FilterContext.Provider>
   );
 }

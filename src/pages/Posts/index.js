@@ -35,7 +35,14 @@ function Pages() {
           <p>Loading posts...</p>
         ) : (
           filters.map((item, index) => {
-            return <PostSample key={index} title={item.meta.title} url={item.meta.url} />;
+            return <PostSample 
+            key={index} 
+            meta={item.meta} 
+            upvotes={item.upvotes} 
+            comments={item.comments} 
+            created_at={item.created_at}
+            category={item.category}
+            />;
           })
         )}
       </Col>
