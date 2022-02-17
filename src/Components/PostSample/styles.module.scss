@@ -1,19 +1,93 @@
 .postContainer {
+  display: flex;
   margin: 2rem;
   width: 45rem;
   height: 7rem;
   border-style: solid;
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem
-}
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
 
-.postUrl {
-  color: #CCCCCC;
-  font-weight: bold;
-  font-size: 0.7rem;
-  margin-bottom: 0;
-}
+  .postVoteContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    padding: 0.5rem;
 
-.postTitle {
-  margin-top: 0.2rem;
-  font-size: 1.25rem;
+    .postVoteIncrement {
+      // display: flex;
+      color: red;
+      border: 1px solid rgba(28, 110, 164, 0.26);
+      padding: 0.5rem;
+      width: 2rem;
+      height: auto;
+
+      &:hover {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    .postVote {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      border-right: 1px solid rgba(28, 110, 164, 0.26);
+      border-left: 1px solid rgba(28, 110, 164, 0.26);
+      border-bottom: 1px solid rgba(28, 110, 164, 0.26);
+      padding: 0.5rem;
+      width: 1rem;
+    }
+  }
+  .postDataContainer {
+    display: -webkit-inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: inherit;
+
+    .postUrl {
+      color: #cccccc;
+      font-weight: bold;
+      font-size: 0.7rem;
+      margin: 0;
+    }
+    .postTitle {
+      margin-top: 0.2rem;
+      font-size: 1.25rem;
+    }
+    .postDetails {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+
+      .postCategory {
+        background-color: rgb(45, 97, 128);
+        color: white;
+        border-radius: 5rem;
+        margin: 1rem;
+        padding: 0.4rem;
+        font-size: 0.8rem;
+      }
+      .postAuthor {
+        font-size: 0.8rem;
+        color: orangered;
+        margin: 1rem;
+      }
+      .postDate{
+        font-size: 0.8rem;
+        color: #cccccc;
+        margin: 1rem;
+      }
+      .postComments{
+        font-size: 0.8rem;
+        color: orangered;
+        margin: 1rem;
+      }
+
+    }
+  }
 }
