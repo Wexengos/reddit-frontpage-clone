@@ -1,16 +1,18 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 
 import Select from "react-select";
 
-import styles from "./styles.module.scss";
-
 import { FilterContext } from "../../App";
-import { options } from "./filterOptions";
+
+import MenuButton from "../../Components/MenuButton";
+
+import styles from "./styles.module.scss";
 
 function Header() {
   const { data, setFilteredData } = useContext(FilterContext);
 
-  const [currentFilter, setCurrentFilter] = useState();
+  const [open, setOpen] = useState(false);
+  const [currentFilter, setCurrentFilter] = useState("none");
 
   function handleSearch(data, setFilteredData, event) {
     // setIsSearched(true);
@@ -18,14 +20,19 @@ function Header() {
     let result = [];
 
     console.log("value: ", value);
-    console.log("data: ", data);
+    console.log("filtro: ", currentFilter);
 
     result = data.filter((target) => {
-      if (target[currentFilter] !== null) {
+      if (currentFilter === "none") {
+        let exists = JSON.stringify(target).toLowerCase().search(value) !== -1;
+        return exists;
+      }
+      if (target[currentFilter] !== undefined) {
         let exists =
           target[currentFilter].toString().toLowerCase().search(value) !== -1;
         return exists;
       }
+      return null;
     });
 
     setFilteredData(result);
@@ -34,12 +41,10 @@ function Header() {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <Select
-          options={options}
-          onChange={(selectedOption) => {
-            console.log("filtro: ", currentFilter);
-            setCurrentFilter(selectedOption.value);
-          }}
+
+        <MenuButton
+          currentFilter={currentFilter}
+          setCurrentFilter={setCurrentFilter}
         />
         <input
           type="text"
