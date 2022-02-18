@@ -30,15 +30,22 @@ const slice = createSlice({
     postsIncrementUpvote: (posts, action) => {
       console.log("action: ", action);
 
+      let indexAux = posts.list.findIndex(
+        (element) =>
+          element.meta.author ===
+          posts.filtered_list[action.payload[1]].meta.author
+      );
+
+      console.log("index aux: ", indexAux);
       posts.filtered_list[action.payload[1]].upvotes = posts.list[
-        action.payload[1]
+        indexAux
       ].upvotes = action.payload[0];
 
-      console.log(
-        posts.list[action.payload[1]].upvotes,
-        " ",
-        posts.filtered_list[action.payload[1]].upvotes
-      );
+      // console.log(
+      //   posts.list[action.payload[1]].upvotes,
+      //   " ",
+      //   posts.filtered_list[action.payload[1]].upvotes
+      // );
     },
   },
 });

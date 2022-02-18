@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
-import {postsIncrementUpvote} from "../../store/posts";
+import { postsIncrementUpvote } from "../../store/posts";
 
 import moment from "moment";
 import { Icon } from "@iconify/react";
