@@ -1,3 +1,6 @@
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
+
 import React, { useState } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,6 +17,8 @@ export const FilterContext = React.createContext({
   setFilteredData: () => {},
 });
 
+const store = configureStore();
+
 function App() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -21,16 +26,18 @@ function App() {
   const searchFilter = { data, setData, filteredData, setFilteredData };
 
   return (
-    <FilterContext.Provider value={searchFilter}>
-      <BrowserRouter>
-        <React.Fragment>
-          <Header />
-        </React.Fragment>
-        <Routes>
-          <Route element={<Posts />} path="/" />
-        </Routes>
-      </BrowserRouter>
-    </FilterContext.Provider>
+    <Provider store={store}>
+      <FilterContext.Provider value={searchFilter}>
+        <BrowserRouter>
+          <React.Fragment>
+            <Header />
+          </React.Fragment>
+          <Routes>
+            <Route element={<Posts />} path="/" />
+          </Routes>
+        </BrowserRouter>
+      </FilterContext.Provider>
+    </Provider>
   );
 }
 

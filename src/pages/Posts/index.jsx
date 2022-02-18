@@ -1,46 +1,33 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { loadPosts } from "../../store/posts";
 
 import Col from "react-bootstrap/Col";
 
 import PostSample from "../../Components/PostSample";
 
-import fakeRedditAPI from "../../services/fakeRedditApi";
-
-import { FilterContext } from "../../App";
-
 function Pages() {
-  const [isLoading, setIsLoading] = useState(true);
-  const { data, setData, filteredData, setFilteredData } =
-    useContext(FilterContext);
+  const dispatch = useDispatch();
 
-  console.log(data);
+  const filtered_posts = useSelector((state) => state.filtered_list);
+  const loading = useSelector((state) => state.loading);
 
   useEffect(() => {
-    async function getPosts() {
-      await fakeRedditAPI.listing.posts
-        .pull()
-        .then((res) => {
-          setData(res.data.links);
-          setFilteredData(res.data.links);
-          setIsLoading(false);
-        })
-        .catch({});
-    }
-
-    getPosts();
-  }, [setData, setFilteredData]);
+    dispatch(loadPosts());
+  }, [dispatch]);
 
   return (
     <Col className="LMcontainer">
       <div>
-        {isLoading ? (
+        {loading ? (
           <p>Loading posts...</p>
-        ) : filteredData.length > 0 ? (
-          filteredData.map((item, index) => {
-            console.log("Item está como tamanho ", filteredData.length);
+        ) : filtered_posts.length > 0 ? (
+          filtered_posts.map((item, index) => {
             return (
               <PostSample
                 key={index}
+                index={index}
                 meta={item.meta}
                 upvotes={item.upvotes}
                 comments={item.comments}
@@ -48,11 +35,9 @@ function Pages() {
                 created_at={item.created_at}
               />
             );
-
-            //meta, upvotes, comments, category, created_at
           })
         ) : (
-          <p>Ops! No results found.</p>
+          <p>Ops, no results found!</p>
         )}
       </div>
     </Col>
