@@ -1,4 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { postsIncrementUpvotes } from "../../store/posts";
 
 import moment from "moment";
 import { Icon } from "@iconify/react";
@@ -6,12 +10,18 @@ import Badge from "./Badge";
 
 import styles from "./styles.module.scss";
 
-function PostSample({ meta, upvotes, comments, category, created_at }) {
-  const [totalVotes, setTotalVotes] = useState(upvotes);
+function PostSample({ post }) {
+  const authors_upvotes = useSelector((state) => state.authors_upvotes);
+
+  const dispatch = useDispatch();
+
+  const [totalVotes, setTotalVotes] = useState(0);
 
   function handleIncrementVote(event) {
-    event.preventDefault();
-    setTotalVotes(totalVotes + 1);
+    console.log("Resultado no postSample: ", authors_upvotes);
+    
+    dispatch(postsIncrementUpvotes([post.meta.author, authors_upvotes[post.meta.author] + 1]))
+
   }
 
   return (
@@ -24,14 +34,14 @@ function PostSample({ meta, upvotes, comments, category, created_at }) {
           <Icon icon="ep:arrow-up-bold" />
         </button>
         <div className={styles.postVote}>
-          <span>{totalVotes}</span>
+          <span>{authors_upvotes[post.meta.author]}</span>
         </div>
       </div>
       <div className={styles.postDataContainer}>
-        <span className={styles.postUrl}>{meta.url.toUpperCase()}</span>
-        <span className={styles.postTitle}>{meta.title}</span>
+        <span className={styles.postUrl}>{post.meta.url.toUpperCase()}</span>
+        <span className={styles.postTitle}>{post.meta.title}</span>
         <div className={styles.postDetails}>
-          <Badge type={category} />
+          <Badge type={post.category} />
           <span className={styles.postDetailsSeparator}>|</span>
           <img
             alt=""
@@ -39,18 +49,16 @@ function PostSample({ meta, upvotes, comments, category, created_at }) {
             src="https://thispersondoesnotexist.com/image"
           />
           <a href="/#" className={styles.postAuthor}>
-            {meta.author}
+            {post.meta.author}
           </a>
           <span className={styles.postDate}>
-            {moment.unix(created_at).fromNow()}
-            <Icon icon="ci:dot-03-m" color="#9c9c9c"/>
+            {moment.unix(post.created_at).fromNow()}
+            <Icon icon="ci:dot-03-m" color="#9c9c9c" />
           </span>
-
-
 
           <a href="/" className={styles.postComments}>
             <Icon icon="fa:comment" className={styles.postCommentsIcon} />
-            {comments} Comments
+            {post.comments} Comments
           </a>
         </div>
       </div>
