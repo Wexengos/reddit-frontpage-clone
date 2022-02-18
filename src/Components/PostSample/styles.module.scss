@@ -1,7 +1,7 @@
 .postContainer {
   display: flex;
   margin: 2rem;
-  width: 45rem;
+  width: 35rem;
   height: 7rem;
   border-style: solid;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
@@ -47,6 +47,7 @@
     justify-content: center;
     align-items: flex-start;
     width: inherit;
+    font-weight: 400;
 
     .postUrl {
       color: #cccccc;
@@ -63,31 +64,41 @@
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
-
-      .postCategory {
-        background-color: rgb(45, 97, 128);
-        color: white;
-        border-radius: 5rem;
-        margin: 1rem;
-        padding: 0.4rem;
-        font-size: 0.8rem;
+      .postDetailsSeparator{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0.5rem;
+        color: #c4c4c4;
+        font-size:1.5rem;
+      }
+    
+      .postAuthorImg {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 0.2rem;
+        margin-left: 0.5rem;
       }
       .postAuthor {
         font-size: 0.8rem;
         color: orangered;
         margin: 1rem;
       }
-      .postDate{
+      .postDate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 0.8rem;
-        color: #cccccc;
-        margin: 1rem;
+        color: #c4c4c4;
+        margin-right: 1rem;
       }
-      .postComments{
+      .postComments {
         font-size: 0.8rem;
         color: orangered;
-        margin: 1rem;
+        .postCommentsIcon {
+          margin-right: 0.5rem;
+        }
       }
-
     }
   }
 }

@@ -3,7 +3,6 @@ import { useEffect, useState, useContext } from "react";
 import Col from "react-bootstrap/Col";
 
 import PostSample from "../../Components/PostSample";
-import Badge from "../../Components/Badge/";
 
 import fakeRedditAPI from "../../services/fakeRedditApi";
 
@@ -14,7 +13,7 @@ function Pages() {
   const { data, setData, filteredData, setFilteredData } =
     useContext(FilterContext);
 
-  // console.log(data);
+  console.log(data);
 
   useEffect(() => {
     async function getPosts() {
@@ -29,7 +28,7 @@ function Pages() {
     }
 
     getPosts();
-  }, [setData]);
+  }, [setData, setFilteredData]);
 
   return (
     <Col className="LMcontainer">

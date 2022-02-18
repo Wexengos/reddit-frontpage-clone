@@ -1,17 +1,17 @@
+import { Icon } from "@iconify/react";
 import { useState, useContext } from "react";
-
-import Select from "react-select";
 
 import { FilterContext } from "../../App";
 
-import MenuButton from "../../Components/MenuButton";
+import MenuButton from "../../Components/Header/MenuButton";
+
+import Logo from "../../assets/logo.png";
 
 import styles from "./styles.module.scss";
 
 function Header() {
   const { data, setFilteredData } = useContext(FilterContext);
 
-  const [open, setOpen] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("none");
 
   function handleSearch(data, setFilteredData, event) {
@@ -41,16 +41,20 @@ function Header() {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerContent}>
-
+      <img src={Logo} alt="logo" className={styles.headerLogo} />
         <MenuButton
           currentFilter={currentFilter}
           setCurrentFilter={setCurrentFilter}
         />
-        <input
-          type="text"
-          className={styles.searchInput}
-          onChange={(e) => handleSearch(data, setFilteredData, e)}
-        />
+        <div className={styles.headerInputContainer}>
+          <Icon icon="fluent:search-16-filled" className={styles.headerInputIcon}/>
+
+          <input
+            type="text"
+            className={styles.searchInput}
+            onChange={(e) => handleSearch(data, setFilteredData, e)}
+          />
+        </div>
       </div>
     </div>
   );
