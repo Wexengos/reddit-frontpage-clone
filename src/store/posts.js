@@ -6,6 +6,7 @@ const slice = createSlice({
   initialState: {
     list: [],
     filtered_list: [],
+    authors_upvotes: {},
     loading: false,
   },
   reducers: {
@@ -27,25 +28,28 @@ const slice = createSlice({
       posts.loading = false;
     },
 
-    postsIncrementUpvote: (posts, action) => {
-      console.log("action: ", action);
+    postsIncrementUpvotes: (posts, action) => {
+      console.log("É isso que tá chegando aí: ", action.payload[1]);
 
-      let indexAux = posts.list.findIndex(
-        (element) =>
-          element.meta.author ===
-          posts.filtered_list[action.payload[1]].meta.author
-      );
+      posts.authors_upvotes[action.payload[0]] = action.payload[1];
+    },
 
-      console.log("index aux: ", indexAux);
-      posts.filtered_list[action.payload[1]].upvotes = posts.list[
-        indexAux
-      ].upvotes = action.payload[0];
+    postsSetUpvotes: (posts, action) => {
+      console.log("chegou o ", action.payload);
 
-      // console.log(
-      //   posts.list[action.payload[1]].upvotes,
-      //   " ",
-      //   posts.filtered_list[action.payload[1]].upvotes
-      // );
+      var authorVotes = {};
+
+      action.payload.forEach((item, index) => {
+        let tempAuthorVotes = {
+          [item.meta.author]: item.upvotes,
+        };
+
+        authorVotes = Object.assign(authorVotes, tempAuthorVotes);
+      });
+
+      console.log("Resultado final: ", authorVotes);
+
+      posts.authors_upvotes = authorVotes;
     },
   },
 });
@@ -57,10 +61,11 @@ const {
   postsReceived,
   postsFiltered,
   postsRequestFailed,
-  postsIncrementUpvote,
+  postsIncrementUpvotes,
+  postsSetUpvotes,
 } = slice.actions;
 
-export { postsReceived, postsFiltered, postsIncrementUpvote };
+export { postsReceived, postsFiltered, postsIncrementUpvotes, postsSetUpvotes };
 
 const url = "/5a6bc16631000078341b8b77";
 

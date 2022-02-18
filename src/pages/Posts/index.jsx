@@ -23,16 +23,11 @@ function Pages() {
         {loading ? (
           <p>Loading posts...</p>
         ) : filtered_posts.length > 0 ? (
-          filtered_posts.map((item, index) => {
+          filtered_posts.map((post, index) => {
             return (
               <PostSample
                 key={index}
-                index={index}
-                meta={item.meta}
-                upvotes={item.upvotes}
-                comments={item.comments}
-                category={item.category}
-                created_at={item.created_at}
+                post={post}
               />
             );
           })

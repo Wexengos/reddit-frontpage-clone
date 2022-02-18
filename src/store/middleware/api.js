@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as actions from "../api";
 
-import { postsFiltered } from "../posts";
+import { postsFiltered, postsSetUpvotes } from "../posts";
 
 const api =
   ({ dispatch }) =>
@@ -22,13 +22,11 @@ const api =
         method,
         data,
       });
-      //Geral
-      dispatch(actions.apiCallSuccess(response.data.links));
-      dispatch(postsFiltered(response.data.links));
-      //Específico
+      
       if (onSuccess) {
         dispatch({ type: onSuccess, payload: response.data.links });
         dispatch(postsFiltered(response.data.links));
+        dispatch(postsSetUpvotes(response.data.links));
       }
     } catch (error) {
       //Geral
