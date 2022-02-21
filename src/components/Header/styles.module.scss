@@ -1,0 +1,57 @@
+.headerContainer {
+    width: 100%;
+    top: 0;
+    height: 5rem;
+    background-color: #fff;
+    position: fixed;
+  }
+  .headerLogo {
+    width: 4.2rem;
+    height: 4rem;
+    margin-right: 3rem;
+  }
+  .headerContent {
+    // width: 1280px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .headerInputContainer {
+    display: flex;
+    width: 23rem;
+    height: 3rem;
+    background-color: #eeeeee;
+    margin-left: 1rem;
+    border-radius: 0.3rem;
+    .searchInput {
+      border: none;
+      width: 100%;
+      height: auto;
+      outline: none;
+      font-size: 1.2rem;
+      background-color: #eeeeee;
+      border-end-end-radius: 0.3rem;
+      border-top-right-radius: 0.3rem;
+    }
+    .headerInputIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.7rem 1rem ;
+      width: 1.5rem;
+      height: 1.5rem;
+      color: #b4b4b4;
+      // border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+  .headerAvatar{
+    margin-left: 1rem;
+    border-radius: 0.3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  

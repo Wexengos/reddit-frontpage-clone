@@ -1,0 +1,73 @@
+.footerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+  
+  .footerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .footerLogoData {
+      display: flex;
+      align-items: center;
+    //   justify-content: center;
+      margin-left: 1rem;
+      .footerLogo {
+        width: 4.2rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+      }
+      .footerData {
+        font-size: 1.2rem;
+        font-family: "Roboto", sans-serif;
+        color: #333333;
+      }
+    }
+  }
+  .footerSocialMidiaInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    // width:
+    .footerSocialMidiaItem {
+      display: flex;
+      flex-direction: row;
+      .footerSocialMidia {
+        width: 30px;
+        height: 30px;
+        margin-right: 1rem;
+      }
+      .footerSocialMidiaInfo {
+        font-size: 1.2rem;
+        font-family: "Roboto", sans-serif;
+        color: #333333;
+      }
+      .footerFacebookIcon {
+        color: #4267b2;
+      }
+      .footerTwitterIcon {
+        color: #1da1f2;
+      }
+    }
+  }
+  .footerOthers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    .footerInfo {
+      display: flex;
+      flex-direction: row;
+    }
+    .footerOthersInfo {
+      font-size: 1.2rem;
+      font-family: "Roboto", sans-serif;
+      color: #333333;
+    }
+  }
+}
