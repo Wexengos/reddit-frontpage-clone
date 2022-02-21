@@ -1,14 +1,13 @@
 import { Icon } from "@iconify/react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { postsFiltered } from "../../store/posts";
 
-import { FilterContext } from "../../App";
-
 import MenuButton from "../../Components/Header/MenuButton";
 
 import Logo from "../../assets/logo.png";
+import AddPost from "./AddPost";
 
 import styles from "./styles.module.scss";
 
@@ -16,10 +15,6 @@ function Header() {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => state.list);
-  const filtered_posts = useSelector((state) => state.filtered_list);
-
-  const { data, setFilteredData } = useContext(FilterContext);
-
   const [currentFilter, setCurrentFilter] = useState("none");
 
   function handleSearch(event) {
@@ -66,6 +61,12 @@ function Header() {
             onChange={(e) => handleSearch(e)}
           />
         </div>
+          <AddPost />
+          <img
+            alt=""
+            className={styles.headerAvatar}
+            src="https://thispersondoesnotexist.com/image"
+          />
       </div>
     </div>
   );

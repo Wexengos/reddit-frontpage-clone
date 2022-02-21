@@ -31,7 +31,7 @@ function PostSample({ post }) {
           className={styles.postVoteIncrement}
           onClick={(event) => handleIncrementVote(event)}
         >
-          <Icon icon="ep:arrow-up-bold" />
+          ^
         </button>
         <div className={styles.postVote}>
           <span>{authors_upvotes[post.meta.author]}</span>

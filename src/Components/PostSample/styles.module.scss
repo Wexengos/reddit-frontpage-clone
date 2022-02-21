@@ -1,7 +1,7 @@
 .postContainer {
   display: flex;
   margin: 1rem;
-  width: 35rem;
+  width: 56rem;
   height: 7rem;
   // border-style: solid;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
@@ -12,16 +12,22 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    padding: 0.5rem;
+    margin: auto;
+    border: 1px solid rgba(28, 110, 164, 0.26);
 
     .postVoteIncrement {
-      // display: flex;
+      display: flex;
+      justify-content: center;
+      // align-items: center;
       color: red;
-      border: 1px solid rgba(28, 110, 164, 0.26);
       padding: 0.5rem;
-      width: 2rem;
-      height: auto;
-
+      border: none;
+      // margin-top: 0.5rem;
+      width: 3rem;
+      height: 2.5rem;
+      font-size: 2rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
       &:hover {
         background-color: red;
         color: white;
@@ -30,15 +36,15 @@
     }
 
     .postVote {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       color: black;
-      border-right: 1px solid rgba(28, 110, 164, 0.26);
-      border-left: 1px solid rgba(28, 110, 164, 0.26);
-      border-bottom: 1px solid rgba(28, 110, 164, 0.26);
-      padding: 0.5rem;
-      width: 1rem;
+      width: 3rem;
+      height: 3rem;
+      border-top: 1px solid rgba(28, 110, 164, 0.26);
+      font-size: 2rem;
     }
   }
   .postDataContainer {
@@ -46,6 +52,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    margin-left: 1rem;
     width: inherit;
     font-weight: 400;
 
@@ -57,7 +64,7 @@
     }
     .postTitle {
       margin-top: 0.2rem;
-      font-size: 1.25rem;
+      font-size: 2rem;
     }
     .postDetails {
       display: flex;
