@@ -1,0 +1,32 @@
+@mixin postCategory {
+    color: white;
+    border-radius: 5rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+  }
+  
+    //categorias
+    .product_design {
+      @include postCategory;
+  
+      background-color: #00e1ac;
+    }
+  
+    .ux_ui {
+      @include postCategory;
+  
+      background-color: #00bbff;
+    }
+  
+    .discussion {
+      @include postCategory;
+  
+      background-color: #4372d6;
+    }
+  
+    .case_study {
+        @include postCategory;
+  
+        background-color: #F4973C;
+    }
+  

@@ -1,0 +1,111 @@
+.postContainer {
+  display: flex;
+  margin: 1rem;
+  width: 56rem;
+  height: 7rem;
+  // border-style: solid;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+
+  .postVoteContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin: auto;
+    border: 1px solid rgba(28, 110, 164, 0.26);
+
+    .postVoteIncrement {
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+      color: red;
+      padding: 0.5rem;
+      border: none;
+      // margin-top: 0.5rem;
+      width: 3rem;
+      height: 2.5rem;
+      font-size: 2rem;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      &:hover {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    .postVote {
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      width: 3rem;
+      height: 3rem;
+      border-top: 1px solid rgba(28, 110, 164, 0.26);
+      font-size: 2rem;
+    }
+  }
+  .postDataContainer {
+    display: -webkit-inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 1rem;
+    width: inherit;
+    font-weight: 400;
+
+    .postUrl {
+      color: #cccccc;
+      font-weight: bold;
+      font-size: 0.7rem;
+      margin: 0;
+    }
+    .postTitle {
+      margin-top: 0.2rem;
+      font-size: 2rem;
+    }
+    .postDetails {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      .postDetailsSeparator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0.5rem;
+        color: #c4c4c4;
+        font-size: 1.5rem;
+      }
+
+      .postAuthorImg {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 0.2rem;
+        margin-left: 0.5rem;
+      }
+      .postAuthor {
+        font-size: 0.8rem;
+        color: orangered;
+        margin: 1rem;
+      }
+      .postDate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        color: #c4c4c4;
+        margin-right: 1rem;
+      }
+      .postComments {
+        font-size: 0.8rem;
+        color: orangered;
+        .postCommentsIcon {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
